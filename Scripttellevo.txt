@@ -1,0 +1,659 @@
+-- phpMyAdmin SQL Dump
+-- version 2.10.1
+-- http://www.phpmyadmin.net
+-- 
+-- Servidor: localhost
+-- Tiempo de generación: 08-06-2009 a las 16:04:45
+-- Versión del servidor: 5.0.45
+-- Versión de PHP: 5.2.5
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- 
+-- Base de datos: `tellevo`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mg_asientos_unidades_transporte`
+-- 
+
+CREATE TABLE `tbl_mg_asientos_unidades_transporte` (
+  `CODIGO_UNIDAD_TRANSPORTE` int(10) NOT NULL,
+  `CODIGO_UBICACION_ASIENTO` varchar(5) NOT NULL,
+  `NUMERO_ASIENTO` int(10) NOT NULL,
+  PRIMARY KEY  (`CODIGO_UNIDAD_TRANSPORTE`,`CODIGO_UBICACION_ASIENTO`,`NUMERO_ASIENTO`),
+  KEY `CODIGO_UBICACION_ASIENTO` (`CODIGO_UBICACION_ASIENTO`),
+  KEY `CODIGO_UNIDAD_TRANSPORTE` (`CODIGO_UNIDAD_TRANSPORTE`),
+  KEY `NUMERO_ASIENTO` (`NUMERO_ASIENTO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mg_asientos_unidades_transporte`
+-- 
+
+INSERT INTO `tbl_mg_asientos_unidades_transporte` (`CODIGO_UNIDAD_TRANSPORTE`, `CODIGO_UBICACION_ASIENTO`, `NUMERO_ASIENTO`) VALUES 
+(1, '1V', 0),
+(1, '1V', 1),
+(1, '1V', 2),
+(1, '1V', 3),
+(1, '1V', 4),
+(1, '1V', 5),
+(1, '1V', 6),
+(1, '1V', 7),
+(1, '2P', 8),
+(1, '2P', 9),
+(1, '2P', 10),
+(1, '2P', 11),
+(1, '2P', 12),
+(1, '2P', 13),
+(1, '2P', 14),
+(1, '2P', 15),
+(2, '1V', 0),
+(2, '1V', 1),
+(2, '1V', 2),
+(2, '1V', 3),
+(2, '1V', 4),
+(2, '1VSP', 10),
+(2, '1VSP', 11),
+(2, '1VSP', 12),
+(2, '1VSP', 13),
+(2, '1VSP', 14),
+(2, '2P', 5),
+(2, '2P', 6),
+(2, '2P', 7),
+(2, '2P', 8),
+(2, '2P', 9),
+(2, '2PSP', 15),
+(2, '2PSP', 16),
+(2, '2PSP', 17),
+(2, '2PSP', 18),
+(2, '2PSP', 19),
+(3, '1V', 0),
+(3, '1V', 1),
+(3, '1V', 2),
+(3, '1V', 3),
+(3, '1V', 4),
+(3, '2P', 5),
+(3, '2P', 6),
+(3, '2P', 7),
+(3, '2P', 8),
+(3, '2P', 9),
+(123456, '1V', 0),
+(123456, '1V', 1),
+(123456, '1V', 2),
+(123456, '1V', 3),
+(123456, '1V', 4),
+(123456, '2P', 5),
+(123456, '2P', 6),
+(123456, '2P', 7),
+(123456, '2P', 8),
+(123456, '2P', 9);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mg_cargos_empleados`
+-- 
+
+CREATE TABLE `tbl_mg_cargos_empleados` (
+  `CODIGO_CARGO_EMPLEADO` int(10) NOT NULL,
+  `DESCRIPCION_CARGO_EMPLEADO` varchar(100) default NULL,
+  PRIMARY KEY  (`CODIGO_CARGO_EMPLEADO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mg_cargos_empleados`
+-- 
+
+INSERT INTO `tbl_mg_cargos_empleados` (`CODIGO_CARGO_EMPLEADO`, `DESCRIPCION_CARGO_EMPLEADO`) VALUES 
+(1, 'CONDUCTOR'),
+(2, 'ASISTENTE CONDUCTOR'),
+(3, 'RECEPCIONISTA');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mg_clases_unidades_transporte`
+-- 
+
+CREATE TABLE `tbl_mg_clases_unidades_transporte` (
+  `CODIGO_CLASE` int(10) NOT NULL auto_increment,
+  `DESCRIPCION_CLASE` varchar(30) default NULL,
+  PRIMARY KEY  (`CODIGO_CLASE`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mg_clases_unidades_transporte`
+-- 
+
+INSERT INTO `tbl_mg_clases_unidades_transporte` (`CODIGO_CLASE`, `DESCRIPCION_CLASE`) VALUES 
+(1, 'Clase A'),
+(2, 'Clase B'),
+(3, 'Clase C');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mg_departamentos`
+-- 
+
+CREATE TABLE `tbl_mg_departamentos` (
+  `CODIGO_PAIS` varchar(4) NOT NULL,
+  `CODIGO_DEPARTAMENTO` int(10) NOT NULL,
+  `DESCRIPCION_DEPARTAMENTO` varchar(100) default NULL,
+  PRIMARY KEY  (`CODIGO_PAIS`,`CODIGO_DEPARTAMENTO`),
+  KEY `TBL_MG_DEPARTAMENTOSCODIGO_DEPARTAMENTO` (`CODIGO_DEPARTAMENTO`),
+  KEY `TBL_MG_DEPARTAMENTOSCODIGO_PAIS` (`CODIGO_PAIS`),
+  KEY `TBL_MG_PAISESTBL_MG_DEPARTAMENTOS` (`CODIGO_PAIS`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mg_departamentos`
+-- 
+
+INSERT INTO `tbl_mg_departamentos` (`CODIGO_PAIS`, `CODIGO_DEPARTAMENTO`, `DESCRIPCION_DEPARTAMENTO`) VALUES 
+('HN', 1, 'Atlantida'),
+('HN', 2, 'Choluteca'),
+('HN', 3, 'Colon'),
+('HN', 4, 'Comayagua'),
+('HN', 5, 'Copan'),
+('HN', 6, 'Cortes'),
+('HN', 7, 'El Paraiso'),
+('HN', 8, 'Francisco Morazan'),
+('HN', 9, 'Gracias a Dios'),
+('HN', 10, 'Intibuca'),
+('HN', 11, 'Islas de la Bahia'),
+('HN', 12, 'La Paz'),
+('HN', 13, 'Lempira'),
+('HN', 14, 'Ocotepeque'),
+('HN', 15, 'Olancho'),
+('HN', 16, 'Santa Barbara'),
+('HN', 17, 'Valle'),
+('HN', 18, 'Yoro');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mg_destinos`
+-- 
+
+CREATE TABLE `tbl_mg_destinos` (
+  `CODIGO_DESTINO` int(10) NOT NULL,
+  `NOMBRE_DESTINO` varchar(100) default NULL,
+  `CODIGO_DEPARTAMENTO` int(10) default NULL,
+  `FOTOGRAFIA` varchar(180) NOT NULL,
+  PRIMARY KEY  (`CODIGO_DESTINO`),
+  KEY `TBL_MG_DESTINOSCODIGO_DEPARTAMENTO` (`CODIGO_DEPARTAMENTO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mg_destinos`
+-- 
+
+INSERT INTO `tbl_mg_destinos` (`CODIGO_DESTINO`, `NOMBRE_DESTINO`, `CODIGO_DEPARTAMENTO`, `FOTOGRAFIA`) VALUES 
+(1, 'Catacamas', 15, 'imagenes_destinos/1.jpg'),
+(2, 'Ceiba', 1, 'imagenes_destinos/2.jpg'),
+(3, 'Choluteca', 2, 'imagenes_destinos/3.jpg'),
+(4, 'Colon', 3, 'imagenes_destinos/4.jpg'),
+(5, 'Comayagua', 4, 'imagenes_destinos/5.jpg'),
+(6, 'Copan', 5, 'imagenes_destinos/6.jpg'),
+(7, 'Danli', 7, 'imagenes_destinos/7.jpg'),
+(8, 'Juticalpa', 15, 'imagenes_destinos/8.jpg'),
+(9, 'La Esperanza', 10, 'imagenes_destinos/9.jpg'),
+(10, 'Langue', 17, 'imagenes_destinos/10.jpg'),
+(11, 'La Paz', 12, 'imagenes_destinos/11.jpg'),
+(12, 'Lempira', 13, 'imagenes_destinos/12.jpg'),
+(13, 'Ocotepeque', 14, 'imagenes_destinos/13.jpg'),
+(14, 'Olanchito', 18, 'imagenes_destinos/14.jpg'),
+(15, 'San Lorenzo', 17, 'imagenes_destinos/15.jpg'),
+(16, 'Santa Barbara', 16, 'imagenes_destinos/16.jpg'),
+(17, 'Siguatepeque', 4, 'imagenes_destinos/17.jpg'),
+(18, 'San Pedro Sula', 6, 'imagenes_destinos/18.jpg'),
+(19, 'Tegucigalpa', 8, 'imagenes_destinos/19.jpg'),
+(20, 'Tela', 1, 'imagenes_destinos/20.jpg'),
+(21, 'Trujillo', 3, 'imagenes_destinos/21.jpg');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mg_empleados`
+-- 
+
+CREATE TABLE `tbl_mg_empleados` (
+  `CODIGO_EMPLEADO` varchar(10) NOT NULL,
+  `NUMERO_IDENTIDAD` varchar(20) default NULL,
+  `NOMBRES` varchar(25) default NULL,
+  `APELLIDOS` varchar(25) default NULL,
+  `DIRECCION_DOMICILIO` varchar(50) default NULL,
+  `TELEFONO` varchar(15) default NULL,
+  `CODIGO_CARGO` int(10) default NULL,
+  `GENERO_EMPLEADO` varchar(1) default NULL,
+  `CORREO` varchar(40) default NULL,
+  PRIMARY KEY  (`CODIGO_EMPLEADO`),
+  KEY `CARGOSEMPLEADOS` (`CODIGO_CARGO`),
+  KEY `IDENTIDAD` (`NUMERO_IDENTIDAD`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mg_empleados`
+-- 
+
+INSERT INTO `tbl_mg_empleados` (`CODIGO_EMPLEADO`, `NUMERO_IDENTIDAD`, `NOMBRES`, `APELLIDOS`, `DIRECCION_DOMICILIO`, `TELEFONO`, `CODIGO_CARGO`, `GENERO_EMPLEADO`, `CORREO`) VALUES 
+('1', '10061987', 'LUCAS QUISIO', 'DESBORDADO', 'FLOR DEL CAMPO', '226565', 1, 'M', NULL),
+('2', '10061988', 'PACIENCIA', 'HIPOCONDRIACO', 'KENNEDY', '222456', 2, 'M', NULL),
+('3', '10036155', 'DARISA', 'SEE', 'LA JOYA', '222454', 3, 'F', NULL),
+('4', '1006-1987-00693', 'Erick Vladimir', 'Reyes Marin', 'col Kenndy', '3291-1008', 1, 'M', 'erick.marin.v@gmail.com'),
+('5', '1006-1694-14656', 'Juan Genaro', 'Rodriguez Meza', 'Centro', '223-5648', 1, 'M', 'genaro@gmail.com');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mg_paises`
+-- 
+
+CREATE TABLE `tbl_mg_paises` (
+  `CODIGO_PAIS` varchar(4) NOT NULL,
+  `NOMBRE_PAIS` varchar(80) default NULL,
+  PRIMARY KEY  (`CODIGO_PAIS`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mg_paises`
+-- 
+
+INSERT INTO `tbl_mg_paises` (`CODIGO_PAIS`, `NOMBRE_PAIS`) VALUES 
+('BC', 'BÉLICE'),
+('CR', 'COSTA RICA'),
+('ES', 'EL SALVADOR'),
+('GU', 'GUATEMALA'),
+('HN', 'HONDURAS'),
+('NIC', 'NICARAGUA'),
+('PA', 'PANAMÁ');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mg_tipos_unidades_transporte`
+-- 
+
+CREATE TABLE `tbl_mg_tipos_unidades_transporte` (
+  `CODIGO_TIPO_UNIDAD_TRANSPORTE` int(10) NOT NULL auto_increment,
+  `TIPO_UNIDAD_TRANSPORTE` varchar(80) default NULL,
+  PRIMARY KEY  (`CODIGO_TIPO_UNIDAD_TRANSPORTE`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mg_tipos_unidades_transporte`
+-- 
+
+INSERT INTO `tbl_mg_tipos_unidades_transporte` (`CODIGO_TIPO_UNIDAD_TRANSPORTE`, `TIPO_UNIDAD_TRANSPORTE`) VALUES 
+(1, 'BUS DE LUJO'),
+(2, 'BUS NORMAL'),
+(3, 'MICROBUS DE LUJO'),
+(4, 'MICROBUS NORMAL');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mg_tipo_pagos`
+-- 
+
+CREATE TABLE `tbl_mg_tipo_pagos` (
+  `CODIGO_TIPO_PAGO` int(10) NOT NULL,
+  `DESCRIPCION_PAGO` varchar(255) default NULL,
+  PRIMARY KEY  (`CODIGO_TIPO_PAGO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mg_tipo_pagos`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mg_ubicaciones_asientos`
+-- 
+
+CREATE TABLE `tbl_mg_ubicaciones_asientos` (
+  `CODIGO_UBICACION_ASIENTO` varchar(5) NOT NULL,
+  `UBICACION_ASIENTO` varchar(100) default NULL,
+  PRIMARY KEY  (`CODIGO_UBICACION_ASIENTO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mg_ubicaciones_asientos`
+-- 
+
+INSERT INTO `tbl_mg_ubicaciones_asientos` (`CODIGO_UBICACION_ASIENTO`, `UBICACION_ASIENTO`) VALUES 
+('1V', 'VENTANA'),
+('1VSP', 'VENTANA SEGUNDO PISO'),
+('2P', 'PASILLO'),
+('2PSP', 'PASILLO SEGUNDO PISO');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mg_unidades_transporte`
+-- 
+
+CREATE TABLE `tbl_mg_unidades_transporte` (
+  `CODIGO_UNIDAD_TRANSPORTE` int(10) NOT NULL,
+  `CODIGO_TIPO_UNIDAD_TRANSPORTE` int(10) default NULL,
+  `NUMERO_PLACA` varchar(10) default NULL,
+  `DESCRIPCION_MODELO` varchar(80) default NULL,
+  `ANIO_MODELO` varchar(10) default NULL,
+  `CAPACIDAD_ASIENTOS` int(10) default NULL,
+  `CODIGO_CLASE` int(10) default NULL,
+  `CODIGO_CONDUCTOR` varchar(10) default NULL,
+  `CODIGO_ASISTENTE` varchar(10) default NULL,
+  PRIMARY KEY  (`CODIGO_UNIDAD_TRANSPORTE`),
+  KEY `CLASEUNIDADES_DE_TRANSPORTE` (`CODIGO_CLASE`),
+  KEY `TBL_MG_UNIDADES_TRANSPORTECODIGO_TIPO_UNIDAD_TRANSPORTE` (`CODIGO_TIPO_UNIDAD_TRANSPORTE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mg_unidades_transporte`
+-- 
+
+INSERT INTO `tbl_mg_unidades_transporte` (`CODIGO_UNIDAD_TRANSPORTE`, `CODIGO_TIPO_UNIDAD_TRANSPORTE`, `NUMERO_PLACA`, `DESCRIPCION_MODELO`, `ANIO_MODELO`, `CAPACIDAD_ASIENTOS`, `CODIGO_CLASE`, `CODIGO_CONDUCTOR`, `CODIGO_ASISTENTE`) VALUES 
+(1, 1, 'AAA-15447', 'MADELINE', '2002', 16, 1, '5', '2'),
+(2, 2, 'AAA-7778', 'PULLMAN DOS PISOS', '2003', 20, 1, '5', '2'),
+(3, 3, 'AAA-4555', 'LANDSCAPE', '1999', 10, 1, '4', '2'),
+(123456, 1, 'AAA-1255', 'NORMAL', '2000', 10, 1, '5', '2');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_ms_administradores`
+-- 
+
+CREATE TABLE `tbl_ms_administradores` (
+  `CODIGO_ADMINISTRADOR` varchar(10) NOT NULL,
+  `NOMBRE_ADMINISTRADOR` varchar(255) default NULL,
+  `DIRECCION` varchar(255) default NULL,
+  `TELEFONO` varchar(255) default NULL,
+  `CONTRASENA` varchar(255) default NULL,
+  `CORREO` varchar(255) default NULL,
+  PRIMARY KEY  (`CODIGO_ADMINISTRADOR`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_ms_administradores`
+-- 
+
+INSERT INTO `tbl_ms_administradores` (`CODIGO_ADMINISTRADOR`, `NOMBRE_ADMINISTRADOR`, `DIRECCION`, `TELEFONO`, `CONTRASENA`, `CORREO`) VALUES 
+('1', 'Administrador', 'Kennedy', '32911008', 'administrador', 'erick.marin.v@gmail.com'),
+('3', 'dimu', 'dadas', '2450615', 'dimu', 'dim@yahoo.com');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_ms_super_administrador`
+-- 
+
+CREATE TABLE `tbl_ms_super_administrador` (
+  `CODIGO_SUPER_ADMINISTRADOR` varchar(255) NOT NULL,
+  `ALIAS_SUPER_ADMINISTRADOR` varchar(255) default NULL,
+  `NOMBRE_SUPER_ADMINISTRADOR` varchar(255) default NULL,
+  `IDENTIDAD_SUPER_ADMINISTRADOR` varchar(255) default NULL,
+  `DIRECCION_SUPER_ADMINISTRADOR` varchar(255) default NULL,
+  `CONTRASENA` varchar(255) default NULL,
+  `DIRECCION_IP_ACCESO` varchar(255) default NULL,
+  PRIMARY KEY  (`CODIGO_SUPER_ADMINISTRADOR`),
+  KEY `IDENTIDAD` (`IDENTIDAD_SUPER_ADMINISTRADOR`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_ms_super_administrador`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mv_cliente`
+-- 
+
+CREATE TABLE `tbl_mv_cliente` (
+  `CODIGO_CLIENTE` varchar(10) NOT NULL,
+  `NOMBRES` varchar(15) default NULL,
+  `APELLIDOS` varchar(15) default NULL,
+  `FECHA_NACIMIENTO` date default NULL,
+  `GENERO` varchar(1) default NULL,
+  `DIRECCION` longtext,
+  `TELEFONO` varchar(15) default NULL,
+  `CORREO_ELECTRONICO` varchar(35) default NULL,
+  `CONTRASENA` varchar(20) default NULL,
+  PRIMARY KEY  (`CODIGO_CLIENTE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mv_cliente`
+-- 
+
+INSERT INTO `tbl_mv_cliente` (`CODIGO_CLIENTE`, `NOMBRES`, `APELLIDOS`, `FECHA_NACIMIENTO`, `GENERO`, `DIRECCION`, `TELEFONO`, `CORREO_ELECTRONICO`, `CONTRASENA`) VALUES 
+('1', 'Mirtala', 'Gomez', NULL, 'N', 'Lejos', '2265659', 'correo@correo.com', 'sepadolores'),
+('123456', 'Angelica', 'Galindo', '1984-10-27', 'F', 'Col. Reparto por bajo', '2205913', 'sdfgsgsfg@angelica.hn', 'holaangelica'),
+('2', 'Ana', 'Perez', NULL, 'N', 'Cerca', '12354556', 'correo@correo.com', 'nose'),
+('3', 'Erick Vladimir', 'Reyes Marin', '1987-08-20', 'M', 'col Kennedy', '32911008', 'erick.marin.v@gmail.com', 'bbsitadica'),
+('4', 'Karen Yesenia', 'Aguilar Andino', '1987-10-29', 'F', 'Bo. La Pagoda', '32858521', 'karen.aguilar.a@gmail.com', 'bbsitodico'),
+('5', 'Donal ', 'Medina Urbina', '1986-04-18', 'M', 'Col Altos de Toncontin', '230-1233', 'dim@yahoo.com', 'dim');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mv_detalle_reservacion_paquete`
+-- 
+
+CREATE TABLE `tbl_mv_detalle_reservacion_paquete` (
+  `CODIGO_RESERVACION` int(10) NOT NULL,
+  `CODIGO_CLIENTE` varchar(10) NOT NULL,
+  `CODIGO_UBICACION_ASIENTO` varchar(5) default NULL,
+  `NUMERO_ASIENTO` int(10) default NULL,
+  PRIMARY KEY  (`CODIGO_RESERVACION`,`CODIGO_CLIENTE`),
+  KEY `TBL_MV_CLIENTETBL_MV_DETALLE_RESERVACION_PAQUETE` (`CODIGO_CLIENTE`),
+  KEY `TBL_MV_DETALLE_RESERVACION_PAQUETECODIGO_UBICACION_ASIENTO` (`CODIGO_UBICACION_ASIENTO`),
+  KEY `TBL_MV_DETALLE_RESERVACION_PAQUETENUMERO_ASIENTO` (`NUMERO_ASIENTO`),
+  KEY `TBL_MV_RESERVACIONES_PAQUETESTBL_MV_DETALLE_RESERVACION_PAQUE` (`CODIGO_RESERVACION`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mv_detalle_reservacion_paquete`
+-- 
+
+INSERT INTO `tbl_mv_detalle_reservacion_paquete` (`CODIGO_RESERVACION`, `CODIGO_CLIENTE`, `CODIGO_UBICACION_ASIENTO`, `NUMERO_ASIENTO`) VALUES 
+(1, '3', '1V', 0),
+(1, '5', '2P', 5),
+(2, '3', '1V', 0),
+(2, '5', '2P', 5);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mv_paquetes`
+-- 
+
+CREATE TABLE `tbl_mv_paquetes` (
+  `CODIGO_PAQUETE` varchar(17) NOT NULL,
+  `CODIGO_RUTA_VIAJE` varchar(15) default NULL,
+  `CODIGO_ORIGEN` int(10) default NULL,
+  `CODIGO_DESTINO` int(10) default NULL,
+  `COSTO_TOTAL` int(10) default NULL,
+  `CANTIDAD_DE_BOLETOS` int(10) default NULL,
+  `DESCRIPCION_PAQUETE` varchar(60) NOT NULL,
+  PRIMARY KEY  (`CODIGO_PAQUETE`),
+  KEY `TBL_MV_PAQUETESCODIGO_DESTINO` (`CODIGO_DESTINO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mv_paquetes`
+-- 
+
+INSERT INTO `tbl_mv_paquetes` (`CODIGO_PAQUETE`, `CODIGO_RUTA_VIAJE`, `CODIGO_ORIGEN`, `CODIGO_DESTINO`, `COSTO_TOTAL`, `CANTIDAD_DE_BOLETOS`, `DESCRIPCION_PAQUETE`) VALUES 
+('Amigos', 'V2P2', 19, 9, 170, 2, 'Paquete para Amigos'),
+('Familiar', 'V1R1', 19, 7, 240, 5, 'Paquete Familiar');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mv_recorrido_ruta`
+-- 
+
+CREATE TABLE `tbl_mv_recorrido_ruta` (
+  `CODIGO_RUTA` varchar(15) NOT NULL,
+  `CODIGO_LUGAR` int(10) NOT NULL,
+  `CARDINALIDAD` int(10) default NULL,
+  `COSTO` int(10) default NULL,
+  `TIEMPO` time default NULL,
+  PRIMARY KEY  (`CODIGO_RUTA`,`CODIGO_LUGAR`),
+  KEY `RUTASCODIGO_RUTA` (`CODIGO_RUTA`),
+  KEY `TBL_MG_DESTINOSTBL_MV_RECORRIDO_RUTA` (`CODIGO_LUGAR`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mv_recorrido_ruta`
+-- 
+
+INSERT INTO `tbl_mv_recorrido_ruta` (`CODIGO_RUTA`, `CODIGO_LUGAR`, `CARDINALIDAD`, `COSTO`, `TIEMPO`) VALUES 
+('R1', 5, 1, 30, '01:00:00'),
+('R1', 9, 3, 100, '03:30:00'),
+('R1', 11, 4, 130, '04:20:00'),
+('R1', 17, 2, 60, '02:00:00'),
+('R1', 19, 0, 0, '00:00:00'),
+('R2', 7, 1, 30, '01:30:00'),
+('R2', 8, 2, 70, '03:40:00'),
+('R2', 19, 0, 0, '00:00:00'),
+('R3', 5, 1, 50, '01:00:00'),
+('R3', 18, 2, 80, '03:00:00'),
+('R3', 19, 0, 0, '00:00:00'),
+('R4', 6, 2, 50, '03:00:00'),
+('R4', 11, 0, 0, '00:00:00'),
+('R4', 12, 1, 35, '02:00:00'),
+('R4', 13, 3, 80, '04:00:00'),
+('R5', 7, 1, 58, '01:20:00'),
+('R5', 19, 0, 0, '00:00:00'),
+('R6', 3, 0, 0, '00:00:00'),
+('R6', 8, 2, 200, '03:30:00'),
+('R6', 19, 1, 100, '02:00:00'),
+('R666', 5, 1, 50, '02:00:00'),
+('R666', 18, 2, 100, '03:00:00'),
+('R666', 19, 0, 0, '00:00:00'),
+('R7', 10, 0, 0, '00:00:00'),
+('R7', 11, 1, 70, '01:00:00'),
+('R7', 19, 2, 150, '02:00:00'),
+('R8', 16, 2, 210, '03:45:00'),
+('R8', 18, 1, 120, '02:30:00'),
+('R8', 19, 0, 0, '00:00:00'),
+('R9', 3, 0, 0, '00:00:00'),
+('R9', 18, 2, 200, '03:50:00'),
+('R9', 19, 1, 100, '01:00:00'),
+('R9', 21, 3, 300, '05:00:00');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mv_reservaciones`
+-- 
+
+CREATE TABLE `tbl_mv_reservaciones` (
+  `CODIGO_RESERVACION` int(15) NOT NULL,
+  `CODIGO_CLIENTE` varchar(15) default NULL,
+  `FECHA_RESERVACION` date default NULL,
+  `CODIGO_VIAJE` varchar(15) default NULL,
+  `CODIGO_LUGAR_ORIGEN` int(10) default NULL,
+  `CODIGO_LUGAR_DESTINO` int(10) default NULL,
+  `CODIGO_TIPO_PAGO` int(10) default NULL,
+  `ESTADO_PAGO` varchar(1) NOT NULL,
+  `MONTO_TOTAL` int(10) default NULL,
+  `CODIGO_UBICACION_ASIENTO` varchar(5) default NULL,
+  `NUMERO_ASIENTO` int(10) default NULL,
+  PRIMARY KEY  (`CODIGO_RESERVACION`),
+  KEY `RESERVACIONCODIGO_RUTA` (`CODIGO_VIAJE`),
+  KEY `TBL_MG_TIPO_PAGOSTBL_MV_RESERVACIONES` (`CODIGO_TIPO_PAGO`),
+  KEY `TBL_MV_CLIENTETBL_MV_RESERVACIONES` (`CODIGO_CLIENTE`),
+  KEY `TBL_MV_RESERVACIONESCODIGO_UBICACION_ASIENTO` (`CODIGO_UBICACION_ASIENTO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mv_reservaciones`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mv_reservaciones_paquetes`
+-- 
+
+CREATE TABLE `tbl_mv_reservaciones_paquetes` (
+  `CODIGO_RESERVACION` int(10) NOT NULL,
+  `CODIGO_PAQUETE` varchar(6) default NULL,
+  `CODIGO_CLIENTE_PAGA` varchar(15) default NULL,
+  `FECHA_RESERVACION` date default NULL,
+  `CODIGO_TIPO_PAGO` int(10) default NULL,
+  `ESTADO_PAGO` varchar(1) default NULL,
+  PRIMARY KEY  (`CODIGO_RESERVACION`),
+  KEY `TBL_MG_TIPO_PAGOSTBL_MV_RESERVACIONES_PAQUETES` (`CODIGO_TIPO_PAGO`),
+  KEY `TBL_MV_CLIENTETBL_MV_RESERVACIONES_PAQUETES` (`CODIGO_CLIENTE_PAGA`),
+  KEY `TBL_MV_PAQUETESTBL_MV_RESERVACIONES_PAQUETES` (`CODIGO_PAQUETE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mv_reservaciones_paquetes`
+-- 
+
+INSERT INTO `tbl_mv_reservaciones_paquetes` (`CODIGO_RESERVACION`, `CODIGO_PAQUETE`, `CODIGO_CLIENTE_PAGA`, `FECHA_RESERVACION`, `CODIGO_TIPO_PAGO`, `ESTADO_PAGO`) VALUES 
+(1, 'Amigos', '3', '2009-05-29', 1, 'P');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mv_rutas_viajes`
+-- 
+
+CREATE TABLE `tbl_mv_rutas_viajes` (
+  `CODIGO_VIAJE` varchar(15) NOT NULL,
+  `CODIGO_RUTA` varchar(15) NOT NULL,
+  `CODIGO_UNIDAD_TRANSPORTE` int(10) NOT NULL,
+  `TIPO_RUTA` varchar(1) NOT NULL,
+  `FECHA_DIAS` varchar(15) default NULL,
+  `HORA_SALIDA` time default NULL,
+  `ASIENTOS_OCUPADOS` int(10) default NULL,
+  PRIMARY KEY  (`CODIGO_VIAJE`,`CODIGO_RUTA`,`CODIGO_UNIDAD_TRANSPORTE`,`TIPO_RUTA`),
+  KEY `RUTA/VIAJECODIGO_RUTA` (`CODIGO_RUTA`),
+  KEY `RUTA/VIAJECODIGO_VIAJE` (`CODIGO_VIAJE`),
+  KEY `TBL_MG_UNIDADES_TRANSPORTETBL_MV_RUTAS/VIAJES` (`CODIGO_UNIDAD_TRANSPORTE`),
+  KEY `TBL_MV_RUTAS/VIAJESCODIGO_UNIDAD_TRANSPORTE` (`CODIGO_UNIDAD_TRANSPORTE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mv_rutas_viajes`
+-- 
+
+INSERT INTO `tbl_mv_rutas_viajes` (`CODIGO_VIAJE`, `CODIGO_RUTA`, `CODIGO_UNIDAD_TRANSPORTE`, `TIPO_RUTA`, `FECHA_DIAS`, `HORA_SALIDA`, `ASIENTOS_OCUPADOS`) VALUES 
+('V1R1', 'R5', 1, 'O', '30/05/2009', '08:00:00', 0),
+('V2P2', 'R1', 2, 'O', '31/05/2009', '06:00:00', 0),
+('V666', 'R666', 1, 'P', 'LMMiJVSD', '12:00:00', 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tbl_mv_usuario_kiosko`
+-- 
+
+CREATE TABLE `tbl_mv_usuario_kiosko` (
+  `CODIGO_EMPLEADO` varchar(255) NOT NULL,
+  `CONTRASENA` varchar(255) default NULL,
+  PRIMARY KEY  (`CODIGO_EMPLEADO`),
+  UNIQUE KEY `TBL_MG_EMPLEADOSTBL_MV_USUARIO_KIOSKO` (`CODIGO_EMPLEADO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Volcar la base de datos para la tabla `tbl_mv_usuario_kiosko`
+-- 
+
+INSERT INTO `tbl_mv_usuario_kiosko` (`CODIGO_EMPLEADO`, `CONTRASENA`) VALUES 
+('1', 'uno');
